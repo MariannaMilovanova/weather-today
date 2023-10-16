@@ -1,9 +1,11 @@
 const { Telegraf, Scenes, session } = require('telegraf');
 const axios = require('axios');
 const language = require('@google-cloud/language');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const TELEGRAM_TOKEN = '6640501130:AAGx8jmKdpvu2DpUSY_TUHXKwIZhQM_S0DI';
-const WEATHER_API_KEY = '3e1eddebb35d2e838c304dd5f0de07db';
+const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5/weather';
 const getWeatherLocationUrl = ({lat, lon}, apikey) => `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid={apikey}`;
 const getWeatherCityUrl = (city, apikey) => `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
